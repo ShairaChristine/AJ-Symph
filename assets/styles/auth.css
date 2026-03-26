@@ -1,0 +1,146 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+    
+    * {
+      font-family: 'Poppins', sans-serif;
+    }
+
+    html, body {
+      height: 100%;
+    }
+    
+    body { 
+        box-sizing: border-box;
+    }
+
+    .app-wrapper {
+      height: 100%;
+    }
+
+    .theme-transition {
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .input-focus {
+      transition: all 0.2s ease;
+    }
+
+    input:focus, textarea:focus {
+      outline: none;
+    }
+
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .form-container {
+      animation: slideIn 0.5s ease forwards;
+    }
+
+    .success-message {
+      animation: slideIn 0.4s ease forwards;
+    }
+
+    body.dark {
+      background: #111827;
+      color: #f9fafb;
+  }
+  
+  body.dark .auth-card {
+      background: #1f2937;
+  }
+  
+  body.dark input {
+      background: #374151;
+      color: #fff;
+      border-color: #4b5563;
+  }
+  
+  body.dark label {
+      color: #e5e7eb;
+  }
+
+.auth-page {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    background: #f5f7fb;
+}
+
+.auth-card {
+    width: 100%;
+    max-width: 420px;
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+    padding: 28px;
+}
+
+.auth-card h1 {
+    margin: 0 0 6px;
+    font-size: 28px;
+}
+
+.auth-subtitle {
+    margin: 0 0 18px;
+    color: #6b7280;
+    font-size: 14px;
+}
+
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.auth-form label {
+    font-size: 14px;
+    color: #374151;
+}
+
+.auth-form input {
+    padding: 10px 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+.auth-form button {
+    margin-top: 10px;
+    padding: 10px 14px;
+    border: none;
+    border-radius: 8px;
+    background: #2563eb;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.auth-form button:hover {
+    background: #1d4ed8;
+}
+
+.auth-switch {
+    margin: 14px 0 0;
+    font-size: 14px;
+    color: #4b5563;
+}
+
+.auth-switch a {
+    color: #2563eb;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.auth-switch a:hover {
+    text-decoration: underline;
+}

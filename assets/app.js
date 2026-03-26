@@ -7,6 +7,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './styles/app.scss';
+import './styles/auth.css';
+import './styles/notes.css';
+import './styles/quotes.css';
 
 import { IndexPage } from "./pages/index/page";
 import { createRoot } from "react-dom/client";

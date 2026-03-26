@@ -1,6 +1,18 @@
 {% extends 'base.html.twig' %}
 {% block body %}
-    <div id="app">here</div>
+    <div style="padding: 40px; font-family: Arial, sans-serif;">
+        <h2>Authentication pages</h2>
+        <p>
+            {% if app.user %}
+                <a href="{{ path('app_notes') }}">Go to Notes</a>
+            {% else %}
+                <a href="{{ path('app_login') }}">Login to access Notes</a>
+            {% endif %}
+            |
+            <a href="{{ path('app_signup') }}">Go to Sign up</a>
+        </p>
+        <div id="app">here</div>
+    </div>
 {% endblock %}
 
 {% block stylesheets %}

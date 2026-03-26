@@ -17,6 +17,7 @@ services:
             - '81'
     db:
         image: mysql:5.7
+        platform: linux/amd64
         restart: always
         environment:
             MYSQL_DATABASE: 'vtc-db'

@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Quotes{% endblock %}
+
+{% block body %}
+    <div class="quotes-page">
+        <h1 class="quotes-title">Quotes</h1>
+
+        <form class="quotes-form" method="post" action="{{ path('app_quotes_new') }}">
+            <label for="content" class="quotes-label">Add a new quote</label>
+            <textarea
+                id="content"
+                name="content"
+                class="quotes-textarea"
+                rows="4"
+                placeholder="Write your quote..."
+                required
+            ></textarea>
+
+            <button type="submit" class="quotes-button">Save</button>
+        </form>
+
+        <div class="quotes-list">
+            {% for quote in quotes %}
+                <div class="quote-card">
+                    <div class="quote-content">{{ quote.content }}</div>
+                    <div class="quote-date">
+                        {{ quote.createdAt|date('Y-m-d H:i') }}
+                    </div>
+                </div>
+            {% else %}
+                <div class="quotes-empty">No quotes yet.</div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
+

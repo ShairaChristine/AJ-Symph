@@ -1,0 +1,142 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Auth{% endblock %}
+
+{% block body %}
+<div class="app-wrapper w-full bg-gradient-to-br from-blue-50 to-indigo-100">
+
+    <div class="w-full min-h-screen flex items-center justify-center p-4">
+        <div class="w-full max-w-md">
+
+            <!-- Card -->
+            <div class="bg-white rounded-2xl shadow-2xl overflow-hidden">
+
+                <!-- Header -->
+                <div class="p-6 text-center" style="background: linear-gradient(to right, #3b82f6, #4f46e5);">
+                    <h1 class="text-2xl font-bold text-white">Welcome</h1>
+                    <p class="text-blue-100 text-sm mt-1">Login or create an account</p>
+                </div>
+
+                <!-- Tabs -->
+                <div class="flex border-b">
+                    <button id="loginTab" class="flex-1 py-4 font-semibold border-b-2 border-blue-500">
+                        Login
+                    </button>
+                    <button id="signupTab" class="flex-1 py-4 font-semibold border-b-2 border-transparent">
+                        Sign Up
+                    </button>
+                </div>
+
+                <div class="p-8">
+
+                    {# ================= LOGIN FORM ================= #}
+                    <form id="loginForm" method="post" action="{{ path('app_login') }}" class="space-y-5">
+
+                        <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+
+                        {% if error %}
+                            <div class="text-red-500 text-sm">
+                                {{ error.messageKey|trans(error.messageData, 'security') }}
+                            </div>
+                        {% endif %}
+
+                        <!-- Email -->
+                        <div>
+                            <label class="block text-sm font-semibold mb-2">Email</label>
+                            <input name="email" type="email"
+                                   value="{{ last_username|default('') }}"
+                                   class="w-full px-4 py-3 border rounded-lg"
+                                   required>
+                        </div>
+
+                        <!-- Password -->
+                        <div>
+                            <label class="block text-sm font-semibold mb-2">Password</label>
+                            <input name="password" type="password"
+                                   class="w-full px-4 py-3 border rounded-lg"
+                                   required>
+                        </div>
+
+                        <button type="submit"
+                            class="w-full bg-blue-500 text-white py-3 rounded-lg">
+                            Login
+                        </button>
+                    </form>
+
+
+                    {# ================= SIGNUP FORM ================= #}
+                    <form id="signupForm" method="post" action="{{ path('app_signup') }}"
+                          class="space-y-5 hidden">
+
+                        <input type="hidden" name="_csrf_token" value="{{ csrf_token('signup') }}">
+
+                        <!-- Name -->
+                        <div>
+                            <label class="block text-sm font-semibold mb-2">Full Name</label>
+                            <input name="name" type="text"
+                                   class="w-full px-4 py-3 border rounded-lg"
+                                   required>
+                        </div>
+
+                        <!-- Email -->
+                        <div>
+                            <label class="block text-sm font-semibold mb-2">Email</label>
+                            <input name="email" type="email"
+                                   class="w-full px-4 py-3 border rounded-lg"
+                                   required>
+                        </div>
+
+                        <!-- Password -->
+                        <div>
+                            <label class="block text-sm font-semibold mb-2">Password</label>
+                            <input name="password" type="password"
+                                   class="w-full px-4 py-3 border rounded-lg"
+                                   required>
+                        </div>
+
+                        <!-- Confirm -->
+                        <div>
+                            <label class="block text-sm font-semibold mb-2">Confirm Password</label>
+                            <input name="confirm_password" type="password"
+                                   class="w-full px-4 py-3 border rounded-lg"
+                                   required>
+                        </div>
+
+                        <button type="submit"
+                            class="w-full bg-indigo-600 text-white py-3 rounded-lg">
+                            Create Account
+                        </button>
+                    </form>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+{# ================= TAB SCRIPT ================= #}
+<script>
+    const loginTab = document.getElementById('loginTab');
+    const signupTab = document.getElementById('signupTab');
+    const loginForm = document.getElementById('loginForm');
+    const signupForm = document.getElementById('signupForm');
+
+    loginTab.addEventListener('click', () => {
+        loginForm.classList.remove('hidden');
+        signupForm.classList.add('hidden');
+
+        loginTab.classList.add('border-blue-500');
+        signupTab.classList.remove('border-blue-500');
+    });
+
+    signupTab.addEventListener('click', () => {
+        signupForm.classList.remove('hidden');
+        loginForm.classList.add('hidden');
+
+        signupTab.classList.add('border-blue-500');
+        loginTab.classList.remove('border-blue-500');
+    });
+</script>
+
+{% endblock %}

@@ -1,0 +1,143 @@
+.notes-page {
+    min-height: 100vh;
+    padding: 32px 24px;
+    background: #f5f7fb;
+    font-family: Arial, sans-serif;
+}
+
+.notes-title {
+    margin: 0 0 20px;
+    font-size: 28px;
+}
+
+.notes-toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    padding: 18px;
+    border-radius: 12px;
+    background: #ffffff;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.06);
+    margin-bottom: 18px;
+}
+
+.notes-field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    min-width: 220px;
+    flex: 1;
+}
+
+.notes-field label {
+    font-size: 14px;
+    color: #374151;
+}
+
+.notes-field input,
+.notes-field select,
+.notes-field textarea {
+    padding: 10px 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    font-size: 14px;
+    background: #ffffff;
+    resize: vertical;
+}
+
+.notes-actions {
+    display: flex;
+    align-items: flex-end;
+    gap: 12px;
+}
+
+.notes-button {
+    padding: 10px 14px;
+    border: none;
+    border-radius: 8px;
+    background: #2563eb;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.notes-button:hover {
+    background: #1d4ed8;
+}
+
+.notes-link {
+    font-size: 14px;
+    color: #2563eb;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.notes-link:hover {
+    text-decoration: underline;
+}
+
+.notes-summary {
+    margin-bottom: 14px;
+    color: #4b5563;
+    font-size: 14px;
+}
+
+.notes-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 14px;
+}
+
+.note-card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 18px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.06);
+}
+
+.note-meta {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+}
+
+.note-pill {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 10px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.note-pill--category {
+    background: #eef2ff;
+    color: #3730a3;
+}
+
+.note-pill--status {
+    background: #f1f5f9;
+    color: #0f172a;
+}
+
+.note-title {
+    margin: 0 0 10px;
+    font-size: 18px;
+}
+
+.note-content {
+    color: #334155;
+    font-size: 14px;
+    line-height: 1.45;
+}
+
+.notes-empty {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 18px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.06);
+    color: #6b7280;
+}
+

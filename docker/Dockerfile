@@ -1,20 +1,17 @@
-FROM alpine:3.18
+FROM php:8.4-fpm-alpine
 
-RUN apk --no-cache add php82 php82-fpm php82-mysqli php82-json php82-openssl php82-curl \
-    php82-zlib php82-xml php82-phar php82-intl php82-dom php82-xmlreader php82-ctype php82-session \
-    php82-mbstring php82-gd php82-iconv php82-simplexml php82-sodium php82-pdo php82-pdo_mysql php82-tokenizer \
-    php82-fileinfo php82-zip imagemagick php82-pecl-imagick php82-pecl-xdebug php82-xmlwriter \
-    nginx supervisor curl bash vim
-
-RUN ln -s /usr/bin/php82 /usr/bin/php
+RUN apk --no-cache add imagemagick nginx supervisor curl bash vim \
+    && apk add --no-cache --virtual .build-deps $PHPIZE_DEPS mariadb-dev \
+    && docker-php-ext-install pdo_mysql \
+    && apk del .build-deps
 
 # Configure nginx
-COPY config/xdebug.ini /etc/php7/conf.d/xdebug.ini
+COPY config/xdebug.ini /usr/local/etc/php/conf.d/xdebug.ini
 COPY config/nginix/template/nginx.template.conf /etc/nginx/nginx.conf
 
 # Configure PHP-FPM
-COPY config/fpm-pool.conf /etc/php7/php-fpm.d/www.conf
-COPY config/php.ini /etc/php7/conf.d/custom.ini
+COPY config/fpm-pool.conf /usr/local/etc/php-fpm.d/www.conf
+COPY config/php.ini /usr/local/etc/php/conf.d/custom.ini
 
 # Install composer from the official image
 COPY --from=composer /usr/bin/composer /usr/bin/composer

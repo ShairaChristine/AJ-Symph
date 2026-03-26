@@ -11,7 +11,6 @@ const Wrapper = styled.div`
 `
 const IndexPage = () => {
     return <Wrapper>
-        <h1>Hello World!!!</h1>
     </Wrapper>
 }
 
